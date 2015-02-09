@@ -7,6 +7,7 @@
 //
 
 #import "Tweet.h"
+#import "TwitterClient.h"
 
 @implementation Tweet
 
@@ -46,6 +47,49 @@
     }
     
     return tweets;
+}
+
+-(void)fav{
+    
+        NSMutableDictionary *idParam = [[NSMutableDictionary alloc] init];
+        [idParam setObject:[NSNumber numberWithInteger:self.tweetId] forKey:@"id"];
+    
+        BOOL isCreate = TRUE;
+        if(self.isFaved){
+            isCreate = FALSE;
+        }
+    
+        [[TwitterClient sharedInstance] createFavWithParams:idParam isCreate:isCreate completion:^(Tweet *tweet, NSError *error) {
+//            NSLog(@"chinma this");
+            if(tweet != nil){
+                self.favCount = tweet.favCount;
+                self.isFaved  = tweet.isFaved;
+                [self.delegate tweet:self didUpdateTweet:self];
+            }
+        }];
+    
+    
+}
+
+
+-(void)reTweet{
+    
+//    NSMutableDictionary *idParam = [[NSMutableDictionary alloc] init];
+//    [idParam setObject:[NSNumber numberWithInteger:self.tweetId] forKey:@"id"];
+    
+//    BOOL isCreate = TRUE;
+//    if(self.isFaved){
+//        isCreate = FALSE;
+//    }
+    
+    [[TwitterClient sharedInstance] createReTweetWithParams:nil tweetId:[NSNumber numberWithInteger:self.tweetId] completion:^(Tweet *tweet, NSError *error) {
+        if(tweet != nil){
+            self.reTweetCount = tweet.reTweetCount;
+            self.isReTweeted  = tweet.isReTweeted;
+            [self.delegate tweet:self didUpdateTweet:self];
+        }
+    }];
+    
 }
 
 @end

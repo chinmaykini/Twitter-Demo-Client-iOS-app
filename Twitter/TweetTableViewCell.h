@@ -10,12 +10,26 @@
 #import "Tweet.h"
 #import "User.h"
 
+@class TweetTableViewCell;
+
+@protocol TweetTableViewCellDelegate <NSObject>
+
+-(void)tweetTableViewCell:(TweetTableViewCell *)tweetTableViewCell didUpdateValue:(TweetTableViewCell *) tweetCell;
+
+@end
+
 @interface TweetTableViewCell : UITableViewCell
 @property (weak, nonatomic) IBOutlet UILabel *tweetLabel;
 @property (weak, nonatomic) IBOutlet UIImageView *profileImage;
 @property (weak, nonatomic) IBOutlet UILabel *retweetLabel;
 @property (weak, nonatomic) IBOutlet UILabel *unameLabel;
 @property (weak, nonatomic) IBOutlet UILabel *screenNameLabel;
+
+@property (weak, nonatomic) IBOutlet UIButton *favButton;
+@property (weak, nonatomic) IBOutlet UIButton *retweetButton;
+@property (weak, nonatomic) IBOutlet UIButton *replyTweet;
+
+@property(nonatomic, weak) id<TweetTableViewCellDelegate> delegate;
 
 @property( strong, nonatomic) Tweet *tweet;
 

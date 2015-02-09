@@ -9,6 +9,14 @@
 #import <Foundation/Foundation.h>
 #import "User.h"
 
+@class Tweet;
+
+@protocol TweetDelegate <NSObject>
+
+-(void) tweet:(Tweet *) tweet didUpdateTweet:(Tweet *) tweetIn;
+
+@end
+
 @interface Tweet : NSObject
 
 @property( strong, nonatomic) NSString *text;
@@ -20,6 +28,7 @@
 @property( nonatomic, assign) BOOL isFaved;
 @property( nonatomic, assign) NSInteger tweetId;
 
+@property( nonatomic, weak) id<TweetDelegate> delegate;
 
 
 -(id) initWithDictionary: (NSDictionary *) dictionary;
@@ -27,5 +36,8 @@
 //helper method for all teh tweets since its an array of tweet in teh repsonse
 // so use this to get the response and build a NSArray of Tweet objects
 +(NSArray *) tweetsWithArray:(NSArray *)array;
+
+-(void)fav;
+-(void)reTweet;
 
 @end

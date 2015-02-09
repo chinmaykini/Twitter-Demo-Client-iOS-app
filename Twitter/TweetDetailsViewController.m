@@ -9,8 +9,10 @@
 #import "TweetDetailsViewController.h"
 #import "UIImageView+AFNetworking.h"
 #import "TwitterClient.h"
+#import "TweetComposeViewController.h"
 
-@interface TweetDetailsViewController ()
+
+@interface TweetDetailsViewController () <TweetDelegate>
 
 @end
 
@@ -26,8 +28,11 @@
     //    self.navigationController.navigationBar.translucent     = YES;
     self.navigationItem.title                               = @"Tweet";
     
+    
     // Signout button
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Reply" style:UIBarButtonItemStylePlain target:self action:@selector(onReply)];
+    
+    self.tweetObj.delegate = self;
     
     [self reloadDetailedView];
 
@@ -71,6 +76,25 @@
     NSDateFormatter *formatter  = [[NSDateFormatter alloc] init];
     formatter.dateFormat        = @"dd/MM/yy, hh:mm a";
     self.createdAtLabel.text    = [formatter stringFromDate:self.tweetObj.createdAt];
+    
+    
+    // Faved
+    if(self.tweetObj.isFaved){
+        UIImage *favImage = [UIImage imageNamed:@"favorite_on.png"];
+        [self.favButton setImage:favImage forState:UIControlStateNormal];
+    } else{
+        UIImage *favImage = [UIImage imageNamed:@"favorite.png"];
+        [self.favButton setImage:favImage forState:UIControlStateNormal];
+    }
+    
+    // RE-tweeted
+    if(self.tweetObj.isReTweeted){
+        UIImage *reTweetImg = [UIImage imageNamed:@"retweet_on.png"];
+        [self.retweetButton setImage:reTweetImg forState:UIControlStateNormal];
+    } else{
+        UIImage *reTweetImg = [UIImage imageNamed:@"retweet.png"];
+        [self.retweetButton setImage:reTweetImg forState:UIControlStateNormal];
+    }
 
 }
 
@@ -80,24 +104,39 @@
 
 -(void) onReply {
     
-
+    TweetComposeViewController *tcvc = [[TweetComposeViewController alloc] init];
+    tcvc.replyScreenName            = self.tweetObj.user.screenName;
+    UINavigationController *nc      = [[UINavigationController alloc] initWithRootViewController:tcvc];
+    [self.navigationController presentViewController:nc animated:YES completion:nil];
+    
 }
-- (IBAction)onTapFav:(id)sender {
+- (IBAction)onTapReply:(id)sender {
+    [self onReply];
+}
+
+- (IBAction)onTapReTweet:(id)sender {
     
-    NSMutableDictionary *idParam = [[NSMutableDictionary alloc] init];
-    [idParam setObject:[NSNumber numberWithInteger:self.tweetObj.tweetId] forKey:@"id"];
-    
-    BOOL isCreate = TRUE;
-    if(self.tweetObj.isFaved){
-        isCreate = FALSE;
+    if(!self.tweetObj.isReTweeted){
+        [self.tweetObj reTweet];
+    } else {
+        NSLog(@"Need to implement destroy re-tweet");
     }
     
-    [[TwitterClient sharedInstance] createFavWithParams:idParam isCreate:isCreate completion:^(Tweet *tweet, NSError *error) {
-        self.tweetObj.favCount = tweet.favCount;
-        self.tweetObj.isFaved  = tweet.isFaved;
-        [self reloadDetailedView];
+}
 
-    }];
+
+- (IBAction)onTapFav:(id)sender {
+
+    [self.tweetObj fav];
+}
+
+-(void) tweet:(Tweet *)tweet didUpdateTweet:(Tweet *)tweetIn{
+    
+    if(tweetIn!=nil){
+        self.tweetObj = tweetIn;
+        [self reloadDetailedView];
+    }
+
 }
 
 @end

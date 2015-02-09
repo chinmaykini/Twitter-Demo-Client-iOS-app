@@ -23,7 +23,11 @@
 
 - (void) homeTimelineWithParams:(NSDictionary *) params completion:(void (^)(NSArray *tweets, NSError *error))completion;
 
+- (void) updateTweetWithParams:(NSDictionary *) params completion:(void (^)(Tweet *tweet, NSError *error))completion;
+
 - (void) createFavWithParams:(NSDictionary *) params isCreate:(BOOL)isCreate completion:(void (^)(Tweet *tweet, NSError *error))completion;
+
+- (void) createReTweetWithParams:(NSDictionary *) params tweetId:(NSNumber *)tweetId completion:(void (^)(Tweet *tweet, NSError *error))completion;
 
 
 @end

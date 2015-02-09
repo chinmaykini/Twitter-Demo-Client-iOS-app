@@ -12,11 +12,14 @@
 #import "Tweet.h"
 #import "TweetTableViewCell.h"
 #import "TweetDetailsViewController.h"
+#import "TweetComposeViewController.h"
 
-@interface TweetsViewController () <UITableViewDataSource, UITableViewDelegate>
+@interface TweetsViewController () <UITableViewDataSource, UITableViewDelegate, TweetTableViewCellDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *tweetsTableView;
 @property (strong, nonatomic) NSArray *myTweetsArray;
+
+@property (nonatomic, strong) UIRefreshControl *refreshControl;
 
 
 @end
@@ -38,22 +41,23 @@
     self.navigationController.navigationBar.barTintColor    = [UIColor cyanColor];
     self.navigationController.navigationBar.tintColor       = [UIColor whiteColor];
 //    self.navigationController.navigationBar.translucent     = YES;
-    self.navigationItem.title                               = @"Home";
+    
+    UIImageView *titleLogo  = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Twitter_logo_white_32.png"]];
+    self.navigationItem.titleView = titleLogo;
+//    self.navigationItem.title                               = @"Home";
     
     // Signout button
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Sign Out" style:UIBarButtonItemStylePlain target:self action:@selector(onSignOut)];
     
-    
-    [[TwitterClient sharedInstance] homeTimelineWithParams:nil completion:^(NSArray *tweets, NSError *error) {
-        self.myTweetsArray = tweets;
-//        NSLog(@"%@", self.myTweetsArray);
-        [self.tweetsTableView reloadData];
-//        for(Tweet *tweet in tweets){
-//            NSLog(@"tweet text : %@", tweet.text);
-//        }
-    }];
+    // New Tweet button
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"New" style:UIBarButtonItemStylePlain target:self action:@selector(onNew)];
     
     
+    self.refreshControl = [[UIRefreshControl alloc] init];
+    [self.refreshControl addTarget:self action:@selector(onRefresh) forControlEvents:UIControlEventValueChanged];
+    [self.tweetsTableView insertSubview:self.refreshControl atIndex:0];
+    
+    [self loadTimeline];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -75,6 +79,9 @@
     TweetTableViewCell *cell  = [tableView dequeueReusableCellWithIdentifier:@"TweetTableViewCell"];
     cell.tweet                = self.myTweetsArray[indexPath.row];
     
+    // listen to the cell change event
+    cell.delegate   = self;
+    
     return cell;
     
 }
@@ -84,12 +91,10 @@
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
     TweetDetailsViewController *tdvc = [[TweetDetailsViewController alloc] init];
-    tdvc.tweetObj                       = self.myTweetsArray[indexPath.row];;
-    
+    tdvc.tweetObj                    = self.myTweetsArray[indexPath.row];;
     
     [self.navigationController pushViewController:tdvc animated:YES];
 }
-
 
 /*
 #pragma mark - Navigation
@@ -102,5 +107,43 @@
 */
 -(void) onSignOut {
     [User logOut];
+}
+
+-(void) onNew {
+    
+    TweetComposeViewController *tcvc = [[TweetComposeViewController alloc] init];
+    tcvc.replyScreenName            = @"";
+    UINavigationController *nc      = [[UINavigationController alloc] initWithRootViewController:tcvc];
+    
+    [self.navigationController presentViewController:nc animated:YES completion:nil];
+}
+
+-(void) onRefresh {
+    [self loadTimeline];
+    [self.refreshControl endRefreshing];
+}
+
+-(void) loadTimeline{
+    [[TwitterClient sharedInstance] homeTimelineWithParams:nil completion:^(NSArray *tweets, NSError *error) {
+        self.myTweetsArray = tweets;
+        //        NSLog(@"%@", self.myTweetsArray);
+        [self.tweetsTableView reloadData];
+        //        for(Tweet *tweet in tweets){
+        //            NSLog(@"tweet text : %@", tweet.text);
+        //        }
+    }];
+}
+
+#pragma mark - Delegate Methods
+-(void)tweetTableViewCell:(TweetTableViewCell *)tweetTableViewCell didUpdateValue:(TweetTableViewCell *)tweetCell{
+    
+    NSIndexPath *indexPath = [self.tweetsTableView indexPathForCell:tweetCell];
+//    NSLog(@"received Cell is Faved : %@", tweetCell.tweet.isFaved);
+    
+    TweetTableViewCell *cell = [self.tweetsTableView cellForRowAtIndexPath:indexPath];
+//    NSLog(@"Dequeued Cell is Faved : %@", cell.tweet.isFaved);
+    // how do you refresh just his cell from index path
+    [self.tweetsTableView reloadData];
+
 }
 @end
