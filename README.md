@@ -5,9 +5,9 @@ Simple Twitter Client Demo iOS App
 This is a Simple Twitter Client that allows your to read your timeline, create tweets, fav, retweet, reply to tweets. 
 The idea was to get introduced to OAuth, Storing User seesions, Auto Layout, Get and Post methods, handling Buttons in tableViewCells.
 
-Time Spent : 15 hours
+### Time Spent : 15 hours
 
-Completed user Stories
+### Completed user Stories
 
 - [x] Required : User can sign in using OAuth login flow
 - [x] Required : User can view last 20 tweets from their home timeline
@@ -24,19 +24,19 @@ Completed user Stories
 - [x] Optional: Replies should be prefixed with the username and the reply_id should be set when posting the tweet,
 - [ ] Optional: User can load more tweets once they reach the bottom of the feed using infinite loading similar to the actual Twitter client
 
-Notes :
+### Notes :
 
-Questions :
+### Questions :
 * How doe you reload just a particular cell in the table view, when a fav button is clicked on the cell from table view, the fav image or count should change. how to avoid reload data.
 * a delegate on teh cell object needs to be called on awakenib & onFav and onREply, why so ?
 
-References
+### References
 * Free iOS icons [glyphish](http://www.glyphish.com/)
 
-VideoWalkthroughs
+### VideoWalkthroughs
 * This [walkthrough](http://vimeo.com/107373841) takes you through the OAuth 1.0a authentication flow. At the end of this video, you'll be able to download tweets.
 * This [walkthrough] (http://vimeo.com/107378059) shows you a pattern for saving the current user as well as firing and handling session events like signing in and signing out.
 
-[Video Walkthrough](TwitterClient.gif)
+### [Video Walkthrough](TwitterClient.gif)
 
 GIF created with [LiceCap](http://www.cockos.com/licecap/).
