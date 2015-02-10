@@ -17,7 +17,7 @@ The idea was to get introduced to OAuth, Storing User seesions, Auto Layout, Get
 - [x] Required : User can compose a new tweet by tapping on a compose button.
 - [x] Required : User can tap on a tweet to view it, with controls to retweet, favorite, and reply.
 
-- [ ] Optional: When composing, you should have a countdown in the upper right for the tweet limit.
+- [x] Optional: When composing, you should have a countdown in the upper right for the tweet limit.
 - [ ] Optional: After creating a new tweet, a user should be able to view it in the timeline immediately without refetching the timeline from the network.
 - [x] Optional: Retweeting and favoriting should increment the retweet and favorite count.
 - [x] Optional: User should be able to unretweet and unfavorite and should decrement the retweet and favorite count.
@@ -41,7 +41,7 @@ The idea was to get introduced to OAuth, Storing User seesions, Auto Layout, Get
 ![Video Walkthrough](TwitterDemo1.gif)
 
 
-![Video Walkthrough](TwitterDemo.gif)
+(TwitterDemo.gif)
 
 
 GIF created with [LiceCap](http://www.cockos.com/licecap/).
