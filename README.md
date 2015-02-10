@@ -38,7 +38,10 @@ The idea was to get introduced to OAuth, Storing User seesions, Auto Layout, Get
 * This [walkthrough] (http://vimeo.com/107378059) shows you a pattern for saving the current user as well as firing and handling session events like signing in and signing out.
 
 ### [Video Walkthrough]
-![Video Walkthrough](TwitterDemo.gif)(TwitterDemo1.gif)
+![Video Walkthrough](TwitterDemo1.gif)
+
+
+![Video Walkthrough](TwitterDemo.gif)
 
 
 GIF created with [LiceCap](http://www.cockos.com/licecap/).
