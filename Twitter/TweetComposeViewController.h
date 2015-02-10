@@ -15,4 +15,7 @@
 @property (weak, nonatomic) IBOutlet UITextField *tweetInputFeild;
 @property(strong, nonatomic) NSString *replyScreenName;
 
+@property (strong, nonatomic) IBOutlet UIBarButtonItem *tweetButton;
+@property (strong, nonatomic) IBOutlet UIBarButtonItem *charCountButton;
+
 @end

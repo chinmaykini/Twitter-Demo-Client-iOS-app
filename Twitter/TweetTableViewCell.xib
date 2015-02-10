@@ -110,6 +110,7 @@
                 <outlet property="retweetButton" destination="1np-q9-LxM" id="VHb-qf-UhT"/>
                 <outlet property="retweetLabel" destination="rsP-SF-o40" id="jIS-6G-EEq"/>
                 <outlet property="screenNameLabel" destination="JT4-qZ-fyM" id="VfO-gd-bVx"/>
+                <outlet property="timeAgoLabel" destination="25C-Pr-bXR" id="ZX1-nw-cQv"/>
                 <outlet property="tweetLabel" destination="hPJ-ec-fHr" id="cHT-nA-2hk"/>
                 <outlet property="unameLabel" destination="IRP-OZ-1oQ" id="m0w-Vl-lRu"/>
             </connections>

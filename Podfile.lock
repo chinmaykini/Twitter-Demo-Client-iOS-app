@@ -24,6 +24,7 @@ PODS:
     - AFNetworking/NSURLConnection (~> 2.5.0)
     - AFNetworking/NSURLSession (~> 2.5.0)
   - Bolts (1.1.3)
+  - NSDate+TimeAgo (1.0.3)
   - Parse (1.6.2):
     - Bolts (~> 1.1)
   - UIScrollView-InfiniteScroll (0.6.0)
@@ -31,6 +32,7 @@ PODS:
 DEPENDENCIES:
   - AFNetworking
   - BDBOAuth1Manager
+  - NSDate+TimeAgo
   - Parse
   - UIScrollView-InfiniteScroll
 
@@ -38,6 +40,7 @@ SPEC CHECKSUMS:
   AFNetworking: 0f54cb5d16ce38c1b76948faffb8d5fb705021c7
   BDBOAuth1Manager: 274574557077abc873fc5688abe8b991e782749c
   Bolts: 3db0a875235e0c9042b013af13af0f00f79b102c
+  NSDate+TimeAgo: f3533e0198fab05b716368b19f8c2185d53d6f3b
   Parse: 60d65108fe39da77ec16c9e51d74b4d296b21424
   UIScrollView-InfiniteScroll: 7f4c8a135bac346af868be2f8591f1686fe2f9c2
 

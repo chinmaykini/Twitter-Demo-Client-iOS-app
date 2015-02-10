@@ -38,7 +38,9 @@
     [self.tweetsTableView registerNib:[UINib nibWithNibName:@"TweetTableViewCell" bundle:nil] forCellReuseIdentifier:@"TweetTableViewCell"];
     self.tweetsTableView.rowHeight = UITableViewAutomaticDimension;
     
-    self.navigationController.navigationBar.barTintColor    = [UIColor cyanColor];
+    // Twitter Color
+    self.navigationController.navigationBar.barTintColor    = [UIColor colorWithRed:0.40196557852924675 green:0.77594807697599411 blue:1 alpha:1];
+    
     self.navigationController.navigationBar.tintColor       = [UIColor whiteColor];
 //    self.navigationController.navigationBar.translucent     = YES;
     
@@ -47,10 +49,10 @@
 //    self.navigationItem.title                               = @"Home";
     
     // Signout button
-    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Sign Out" style:UIBarButtonItemStylePlain target:self action:@selector(onSignOut)];
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Logout" style:UIBarButtonItemStyleDone target:self action:@selector(onSignOut)];
     
     // New Tweet button
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"New" style:UIBarButtonItemStylePlain target:self action:@selector(onNew)];
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Compose" style:UIBarButtonItemStyleDone target:self action:@selector(onNew)];
     
     
     self.refreshControl = [[UIRefreshControl alloc] init];

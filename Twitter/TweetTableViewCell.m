@@ -9,6 +9,7 @@
 #import "TweetTableViewCell.h"
 #import "UIImageView+AFNetworking.h"
 #import "TweetComposeViewController.h"
+#import "NSDate+TimeAgo.h"
 
 @interface TweetTableViewCell () <TweetDelegate>
 
@@ -73,7 +74,7 @@
         [self.retweetButton setImage:reTweetImg forState:UIControlStateNormal];
     }
     
-//    [self set]
+    self.timeAgoLabel.text = [NSString stringWithFormat:@"%@ ago",[self.tweet.createdAt timeAgoSimple]];
     
 }
 

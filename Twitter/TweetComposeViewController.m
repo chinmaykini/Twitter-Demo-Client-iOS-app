@@ -21,8 +21,8 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
 
+    self.navigationController.navigationBar.barTintColor    = [UIColor colorWithRed:0.40196557852924675 green:0.77594807697599411 blue:1 alpha:1];
     
-    self.navigationController.navigationBar.barTintColor    = [UIColor cyanColor];
     self.navigationController.navigationBar.tintColor       = [UIColor whiteColor];
     //    self.navigationController.navigationBar.translucent     = YES;
 //    self.navigationItem.title                               = @"Home";
@@ -31,10 +31,21 @@
 
     
     // Signout button
-    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Cancel" style:UIBarButtonItemStylePlain target:self action:@selector(onCancel)];
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Cancel" style:UIBarButtonItemStyleDone target:self action:@selector(onCancel)];
     
     // New Tweet button
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Tweet" style:UIBarButtonItemStylePlain target:self action:@selector(onTweet)];
+//    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Tweet" style:UIBarButtonItemStylePlain target:self action:@selector(onTweet)];
+    
+    
+    self.tweetButton = [[UIBarButtonItem alloc] initWithTitle:@"Tweet" style:UIBarButtonItemStyleDone target:self action:@selector(onTweet)];
+    self.charCountButton = [[UIBarButtonItem alloc] initWithTitle:@"140" style:UIBarButtonItemStylePlain target:self action:@selector(voidfunc)];
+    
+//    self.charCountButton.enabled = NO;
+    
+//    UILabel *charCountFeild =[[UILabel alloc] init];
+//    charCountFeild.text = @"140";
+    
+    self.navigationItem.rightBarButtonItems = [NSArray arrayWithObjects:self.tweetButton, self.charCountButton, nil];
     
     // get the current user
     User *user = [User currentUser];
@@ -50,7 +61,11 @@
     if([self.replyScreenName length]>0){
 //        self.tweetInputFeild.text = [NSString stringWithFormat:@"@%@",self.replyScreenName];
         [self.tweetInputFeild setText:[NSString stringWithFormat:@"%@ ",self.replyScreenName]];
+        self.charCountButton.title = [NSString stringWithFormat:@"%d ", 140-(int)[self.tweetInputFeild.text length]];
     }
+    
+    
+//    [self.tweetInputFeild addTarget:self action:@selector(textFieldDidChange:) forControlEvents:UIControlEventEditingChanged];
     
 }
 
@@ -87,6 +102,14 @@
         }];
     }
     
+}
+-(void)voidfunc{
+    NSLog(@"do nothing");
+}
+
+- (IBAction)tweetInputTextChanged:(id)sender {
+//    NSLog(@"%d",(int)[self.tweetInputFeild.text length]);
+    self.charCountButton.title = [NSString stringWithFormat:@"%d ", 140-(int)[self.tweetInputFeild.text length]];
 }
 
 @end

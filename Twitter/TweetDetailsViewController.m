@@ -22,15 +22,15 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     
+    self.navigationController.navigationBar.barTintColor    = [UIColor colorWithRed:0.40196557852924675 green:0.77594807697599411 blue:1 alpha:1];
     
-    self.navigationController.navigationBar.barTintColor    = [UIColor cyanColor];
     self.navigationController.navigationBar.tintColor       = [UIColor whiteColor];
     //    self.navigationController.navigationBar.translucent     = YES;
     self.navigationItem.title                               = @"Tweet";
     
     
     // Signout button
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Reply" style:UIBarButtonItemStylePlain target:self action:@selector(onReply)];
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Reply" style:UIBarButtonItemStyleDone target:self action:@selector(onReply)];
     
     self.tweetObj.delegate = self;
     
@@ -138,5 +138,7 @@
     }
 
 }
+
+
 
 @end

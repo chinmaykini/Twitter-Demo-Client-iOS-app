@@ -41,6 +41,9 @@
                     <rect key="frame" x="8" y="197" width="304" height="363"/>
                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                     <textInputTraits key="textInputTraits"/>
+                    <connections>
+                        <action selector="tweetInputTextChanged:" destination="-1" eventType="editingChanged" id="G6H-gk-7go"/>
+                    </connections>
                 </textField>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
