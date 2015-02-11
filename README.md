@@ -29,6 +29,10 @@ The idea was to get introduced to OAuth, Storing User seesions, Auto Layout, Get
 ### Questions :
 * How doe you reload just a particular cell in the table view, when a fav button is clicked on the cell from table view, the fav image or count should change. how to avoid reload data.
 * a delegate on teh cell object needs to be called on awakenib & onFav and onREply, why so ?
+* The char count for tweet is a button item. Is there a better way?
+* is there a better way to pass the New Tweet back 2 levels views down than a delegate?
+* Tweet model can make Client Calls?
+* whats mantle?
 
 ### References
 * Free iOS icons [glyphish](http://www.glyphish.com/)
