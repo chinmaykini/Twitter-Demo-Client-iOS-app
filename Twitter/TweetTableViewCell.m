@@ -10,8 +10,11 @@
 #import "UIImageView+AFNetworking.h"
 #import "TweetComposeViewController.h"
 #import "NSDate+TimeAgo.h"
+#import "TwitterClient.h"
 
 @interface TweetTableViewCell () <TweetDelegate>
+
+- (IBAction) onProfileImageTap:(UITapGestureRecognizer *)sender;
 
 @end
 
@@ -56,14 +59,15 @@
 //        self.retweetLabel.text = [NSString stringWithFormat:@"%@ retweeted", tweetUser.screenName];
 //    }
     
+    UIImage *favImage = [UIImage imageNamed:@"favorite.png"];
+    [self.favButton setImage:favImage forState:UIControlStateNormal];
+    
+    favImage = [UIImage imageNamed:@"favorite_on.png"];
+    [self.favButton setImage:favImage forState:UIControlStateSelected];
+    
+    
     // Faved
-    if(self.tweet.isFaved){
-        UIImage *favImage = [UIImage imageNamed:@"favorite_on.png"];
-        [self.favButton setImage:favImage forState:UIControlStateNormal];
-    } else{
-        UIImage *favImage = [UIImage imageNamed:@"favorite.png"];
-        [self.favButton setImage:favImage forState:UIControlStateNormal];
-    }
+    self.favButton.selected = self.tweet.isFaved;
     
     // RE-tweeted
     if(self.tweet.isReTweeted){
@@ -75,6 +79,9 @@
     }
     
     self.timeAgoLabel.text = [NSString stringWithFormat:@"%@ ago",[self.tweet.createdAt timeAgoSimple]];
+    
+    UITapGestureRecognizer *profileImageTapGes = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(onProfileImageTap:)];
+    [self.profileImage addGestureRecognizer:profileImageTapGes];
     
 }
 
@@ -94,6 +101,7 @@
      self.tweet.delegate = self;
     [self.tweet fav];
     
+    self.favButton.selected = !self.favButton.selected;
 }
 
 - (IBAction)onReTweetTap:(id)sender {
@@ -112,6 +120,7 @@
 //    tcvc.replyScreenName            = self.tweet.user.screenName;
 //    UINavigationController *nc      = [[UINavigationController alloc] initWithRootViewController:tcvc];
 //    [self. presentViewController:nc animated:YES completion:nil];
+    [self.delegate tweetTableViewCell:self replyClicked:self.tweet];
     
 }
 
@@ -125,6 +134,20 @@
         [self.delegate tweetTableViewCell:self didUpdateValue:self];
     }
     
+}
+
+- (IBAction)onProfileImageTap:(UITapGestureRecognizer *)sender {
+    
+//    NSMutableDictionary *userParam = [[NSMutableDictionary alloc] init];
+//    [userParam setObject:[NSNumber numberWithInteger:self.tweet.user.userId] forKey:@"user_id"];
+//    [userParam setObject:self.tweet.user.screenName forKey:@"screen_name"];
+//    
+//    [[TwitterClient sharedInstance] getUserWithParams:userParam completion:^(User *user, NSError *error) {
+//        self.user = user;
+//        [self reloadView];
+//    }];
+
+    [self.delegate tweetTableViewCell:self profileImageClicked:self.tweet.user];
 }
 
 @end

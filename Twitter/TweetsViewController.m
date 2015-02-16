@@ -13,6 +13,7 @@
 #import "TweetTableViewCell.h"
 #import "TweetDetailsViewController.h"
 #import "TweetComposeViewController.h"
+#import "UserProfileViewController.h"
 
 @interface TweetsViewController () <UITableViewDataSource, UITableViewDelegate, TweetTableViewCellDelegate>
 
@@ -126,7 +127,11 @@
 }
 
 -(void) loadTimeline{
-    [[TwitterClient sharedInstance] homeTimelineWithParams:nil completion:^(NSArray *tweets, NSError *error) {
+    
+    NSMutableDictionary *countParam = [[NSMutableDictionary alloc] init];
+    [countParam setObject:[NSNumber numberWithInteger:199] forKey:@"count"];
+    
+    [[TwitterClient sharedInstance] homeTimelineWithParams:countParam completion:^(NSArray *tweets, NSError *error) {
         self.myTweetsArray = tweets;
         //        NSLog(@"%@", self.myTweetsArray);
         [self.tweetsTableView reloadData];
@@ -142,10 +147,28 @@
     NSIndexPath *indexPath = [self.tweetsTableView indexPathForCell:tweetCell];
 //    NSLog(@"received Cell is Faved : %@", tweetCell.tweet.isFaved);
     
-    TweetTableViewCell *cell = [self.tweetsTableView cellForRowAtIndexPath:indexPath];
+//    TweetTableViewCell *cell = [self.tweetsTableView cellForRowAtIndexPath:indexPath];
 //    NSLog(@"Dequeued Cell is Faved : %@", cell.tweet.isFaved);
     // how do you refresh just his cell from index path
     [self.tweetsTableView reloadData];
 
+}
+
+-(void)tweetTableViewCell:(TweetTableViewCell *)tweetTableViewCell profileImageClicked:(User *)clickedUser{
+
+    UserProfileViewController *tvc       = [[UserProfileViewController alloc] init];
+    tvc.userIdIn = clickedUser.userId;
+    tvc.screenNameIn = clickedUser.screenName;
+    [self.navigationController pushViewController:tvc animated:YES];
+
+}
+
+-(void)tweetTableViewCell:(TweetTableViewCell *)tweetTableViewCell replyClicked:(Tweet *)replyTweet{
+    TweetComposeViewController *tcvc = [[TweetComposeViewController alloc] init];
+    tcvc.replyScreenName            = replyTweet.user.screenName;
+    tcvc.replyTweetId               = replyTweet.tweetId;
+    tcvc.isReply                    = YES;
+    UINavigationController *nc      = [[UINavigationController alloc] initWithRootViewController:tcvc];
+    [self.navigationController presentViewController:nc animated:YES completion:nil];
 }
 @end

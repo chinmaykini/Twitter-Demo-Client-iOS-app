@@ -21,6 +21,13 @@ extern NSString * const UserDidLogoutNotification;
 @property ( nonatomic, strong) NSString *screenName;
 @property ( nonatomic, strong) NSString *profileImageURL;
 @property ( nonatomic, strong) NSString *tagLine;
+@property ( nonatomic, assign) NSInteger favouritesCount;
+@property ( nonatomic, assign) NSInteger followersCount;
+@property ( nonatomic, assign) NSInteger statusCount;
+@property ( nonatomic, assign) NSInteger friendsCount;
+@property ( nonatomic, assign) NSInteger listedCount;
+@property ( nonatomic, assign) NSInteger userId;
+@property ( nonatomic, strong) NSString *profileBackgroundImageURL;
 
 -(id) initWithDictionary: (NSDictionary *) dictionary;
 

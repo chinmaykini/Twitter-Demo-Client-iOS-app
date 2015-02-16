@@ -25,13 +25,6 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="HKO-pM-FLh">
-                    <rect key="frame" x="8" y="96" width="80" height="80"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="80" id="91V-YP-vTE"/>
-                        <constraint firstAttribute="width" constant="80" id="qr0-7b-jQK"/>
-                    </constraints>
-                </imageView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="chinmay kini" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kUx-tG-b3D">
                     <rect key="frame" x="96" y="96" width="77" height="16"/>
                     <fontDescription key="fontDescription" type="boldSystem" pointSize="13"/>
@@ -101,6 +94,17 @@
                         <action selector="onTapFav:" destination="-1" eventType="touchUpInside" id="KAR-bg-w3M"/>
                     </connections>
                 </button>
+                <imageView multipleTouchEnabled="YES" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="HKO-pM-FLh">
+                    <rect key="frame" x="8" y="96" width="80" height="80"/>
+                    <gestureRecognizers/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="80" id="91V-YP-vTE"/>
+                        <constraint firstAttribute="width" constant="80" id="qr0-7b-jQK"/>
+                    </constraints>
+                    <connections>
+                        <outletCollection property="gestureRecognizers" destination="aVP-De-d5t" appends="YES" id="pab-Kb-NKx"/>
+                    </connections>
+                </imageView>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
@@ -130,6 +134,11 @@
             </constraints>
             <point key="canvasLocation" x="317" y="180"/>
         </view>
+        <tapGestureRecognizer id="aVP-De-d5t">
+            <connections>
+                <action selector="onProfileImageTap:" destination="-1" id="Bhu-by-oWk"/>
+            </connections>
+        </tapGestureRecognizer>
     </objects>
     <resources>
         <image name="favorite.png" width="16" height="16"/>

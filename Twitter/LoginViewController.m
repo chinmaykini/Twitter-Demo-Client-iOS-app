@@ -10,6 +10,8 @@
 #import "TwitterClient.h"
 #import "User.h"
 #import "TweetsViewController.h"
+#import "MentionsViewController.h"
+#import "UserProfileViewController.h"
 
 @interface LoginViewController ()
 
@@ -26,6 +28,12 @@
             NSLog(@"Welcome to %@", user.screenName);
             
             TweetsViewController *tvc       = [[TweetsViewController alloc] init];
+//            UserProfileViewController *tvc       = [[UserProfileViewController alloc] init];
+            
+//            tvc.userIdIn = user.userId;
+//            tvc.screenNameIn = user.screenName;
+
+//            MentionsViewController *tvc       = [[MentionsViewController alloc] init];
             UINavigationController *nc      = [[UINavigationController alloc] initWithRootViewController:tvc];
             
 //            [self presentViewController:[[TweetsViewController alloc] init] animated:YES completion:nil];

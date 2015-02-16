@@ -16,6 +16,10 @@
 
 -(void)tweetTableViewCell:(TweetTableViewCell *)tweetTableViewCell didUpdateValue:(TweetTableViewCell *) tweetCell;
 
+-(void)tweetTableViewCell:(TweetTableViewCell *)tweetTableViewCell profileImageClicked:(User *) clickedUser;
+
+-(void)tweetTableViewCell:(TweetTableViewCell *)tweetTableViewCell replyClicked:(Tweet *) replyTweet;
+
 @end
 
 @interface TweetTableViewCell : UITableViewCell

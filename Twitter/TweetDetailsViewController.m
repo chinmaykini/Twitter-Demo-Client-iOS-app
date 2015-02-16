@@ -10,6 +10,7 @@
 #import "UIImageView+AFNetworking.h"
 #import "TwitterClient.h"
 #import "TweetComposeViewController.h"
+#import "UserProfileViewController.h"
 
 
 @interface TweetDetailsViewController () <TweetDelegate>
@@ -95,6 +96,8 @@
         UIImage *reTweetImg = [UIImage imageNamed:@"retweet.png"];
         [self.retweetButton setImage:reTweetImg forState:UIControlStateNormal];
     }
+    
+    NSLog(@"Tweet Id : %@", [NSNumber numberWithInteger:self.tweetObj.tweetId] );
 
 }
 
@@ -106,6 +109,8 @@
     
     TweetComposeViewController *tcvc = [[TweetComposeViewController alloc] init];
     tcvc.replyScreenName            = self.tweetObj.user.screenName;
+    tcvc.replyTweetId               = self.tweetObj.tweetId;
+    tcvc.isReply                    = YES;
     UINavigationController *nc      = [[UINavigationController alloc] initWithRootViewController:tcvc];
     [self.navigationController presentViewController:nc animated:YES completion:nil];
     
@@ -139,6 +144,16 @@
 
 }
 
+- (IBAction)onProfileImageTap:(UITapGestureRecognizer *)sender {
+    
+    UserProfileViewController *tvc       = [[UserProfileViewController alloc] init];
+    tvc.userIdIn = self.tweetObj.user.userId;
+    tvc.screenNameIn = self.tweetObj.user.screenName;
+    
+    [self.navigationController pushViewController:tvc animated:YES];
+
+    
+}
 
 
 @end

@@ -14,13 +14,14 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="RT @19sixty3 : Lights Under Big Ben http://t.co/2USPh2adjJ #photography #photo #foto #flickr" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hPJ-ec-fHr">
-                        <rect key="frame" x="86" y="37" width="226" height="40"/>
+                        <rect key="frame" x="86" y="37" width="226" height="39.5"/>
                         <fontDescription key="fontDescription" type="system" pointSize="11"/>
                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="icA-DM-2q7">
+                    <imageView multipleTouchEnabled="YES" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="icA-DM-2q7">
                         <rect key="frame" x="8" y="15" width="70" height="70"/>
+                        <gestureRecognizers/>
                         <constraints>
                             <constraint firstAttribute="height" constant="70" id="bHk-pw-GgG"/>
                             <constraint firstAttribute="width" constant="70" id="gtY-50-gKW"/>
@@ -45,7 +46,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="L9U-gk-WMV">
-                        <rect key="frame" x="86" y="80" width="16" height="26"/>
+                        <rect key="frame" x="86" y="80" width="16" height="26.5"/>
                         <state key="normal" image="reply.png">
                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                         </state>
@@ -87,6 +88,7 @@
                     <constraint firstAttribute="trailing" secondItem="25C-Pr-bXR" secondAttribute="trailing" constant="8" id="DeF-xU-dH3"/>
                     <constraint firstItem="hPJ-ec-fHr" firstAttribute="leading" secondItem="icA-DM-2q7" secondAttribute="trailing" constant="8" id="EIA-ic-Ii6"/>
                     <constraint firstItem="JT4-qZ-fyM" firstAttribute="top" secondItem="rsP-SF-o40" secondAttribute="bottom" constant="4" id="F0W-BO-KFA"/>
+                    <constraint firstAttribute="bottom" secondItem="icA-DM-2q7" secondAttribute="bottom" constant="25" id="I50-Vw-Q6e"/>
                     <constraint firstItem="rsP-SF-o40" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="3" id="IOB-TQ-5jg"/>
                     <constraint firstAttribute="bottom" secondItem="L9U-gk-WMV" secondAttribute="bottom" constant="3.5" id="KYX-Jd-S8g"/>
                     <constraint firstItem="icA-DM-2q7" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="8" id="O75-No-5e2"/>

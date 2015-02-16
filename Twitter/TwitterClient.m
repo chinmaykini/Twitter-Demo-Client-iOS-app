@@ -126,13 +126,36 @@ NSString * const kTwitterBaseURL = @"https://api.twitter.com";
 - (void) homeTimelineWithParams:(NSDictionary *) params completion:(void (^)(NSArray *tweets, NSError *error))completion{
     
     [self GET:@"1.1/statuses/home_timeline.json" parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
-//        NSLog(@"%@", responseObject);
+        NSLog(@"%@", responseObject);
         NSArray *tweets = [Tweet tweetsWithArray:responseObject];
         completion(tweets, nil); // on this completion the code where you call homeTImeLine is called.
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         completion(nil, error);
     }];
 }
+
+- (void) mentionsTimelineWithParams:(NSDictionary *) params completion:(void (^)(NSArray *tweets, NSError *error))completion{
+    
+    [self GET:@"1.1/statuses/mentions_timeline.json" parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        NSLog(@"%@", responseObject);
+        NSArray *tweets = [Tweet tweetsWithArray:responseObject];
+        completion(tweets, nil); // on this completion the code where you call homeTImeLine is called.
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        completion(nil, error);
+    }];
+}
+
+- (void) userTimelineWithParams:(NSDictionary *) params completion:(void (^)(NSArray *tweets, NSError *error))completion{
+    
+    [self GET:@"1.1/statuses/user_timeline.json" parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        NSLog(@"%@", responseObject);
+        NSArray *tweets = [Tweet tweetsWithArray:responseObject];
+        completion(tweets, nil); // on this completion the code where you call homeTImeLine is called.
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        completion(nil, error);
+    }];
+}
+
 
 - (void) createFavWithParams:(NSDictionary *) params isCreate:(BOOL)isCreate completion:(void (^)(Tweet *tweet, NSError *error))completion{
     
@@ -156,6 +179,7 @@ NSString * const kTwitterBaseURL = @"https://api.twitter.com";
 
 - (void) updateTweetWithParams:(NSDictionary *) params completion:(void (^)(Tweet *tweet, NSError *error))completion{
     
+    NSLog(@"params : %@", params);
     [self POST:@"1.1/statuses/update.json" parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
 //        NSLog(@"%@", responseObject);
         Tweet *tweet = [[Tweet alloc] initWithDictionary:responseObject];
@@ -168,6 +192,7 @@ NSString * const kTwitterBaseURL = @"https://api.twitter.com";
 
 - (void) createReTweetWithParams:(NSDictionary *) params tweetId:(NSNumber *)tweetId completion:(void (^)(Tweet *tweet, NSError *error))completion{
 
+    NSLog(@"Retweet id : %@",tweetId);
     NSString *postString = [NSString stringWithFormat:@"1.1/statuses/retweet/%@.json",tweetId];
     [self POST:postString parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
 //        NSLog(@"%@", responseObject);
@@ -178,5 +203,19 @@ NSString * const kTwitterBaseURL = @"https://api.twitter.com";
     }];
     
 }
+
+- (void) getUserWithParams:(NSDictionary *) params completion:(void (^)(User *user, NSError *error))completion{
+    
+    NSLog(@"Get User params : %@", params);
+    [self GET:@"1.1/users/show.json" parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        NSLog(@"%@", responseObject);
+        User *currentUser = [[User alloc] initWithDictionary:responseObject];
+        completion(currentUser, nil); // on this completion the code where you call homeTImeLine is called.
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        completion(nil, error);
+    }];
+    
+}
+
 
 @end

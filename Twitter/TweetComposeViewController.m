@@ -10,6 +10,7 @@
 #import "TwitterClient.h"
 #import "User.h"
 #import "UIImageView+AFNetworking.h"
+#import "UserProfileViewController.h"
 
 @interface TweetComposeViewController ()
 
@@ -95,6 +96,10 @@
         NSMutableDictionary *statusParam = [[NSMutableDictionary alloc] init];
         [statusParam setObject:self.tweetInputFeild.text forKey:@"status"];
         
+        if(self.isReply){
+            [statusParam setObject:[NSNumber numberWithInteger:self.replyTweetId] forKey:@"in_reply_to_status_id"];
+        }
+        
         [[TwitterClient sharedInstance] updateTweetWithParams:statusParam completion:^(Tweet *tweet, NSError *error) {
             if(tweet != nil){
                 [self dismissViewControllerAnimated:YES completion:nil];
@@ -110,6 +115,17 @@
 - (IBAction)tweetInputTextChanged:(id)sender {
 //    NSLog(@"%d",(int)[self.tweetInputFeild.text length]);
     self.charCountButton.title = [NSString stringWithFormat:@"%d ", 140-(int)[self.tweetInputFeild.text length]];
+}
+- (IBAction)onProfileImageTap:(id)sender {
+   
+    User *user = [User currentUser];
+
+    UserProfileViewController *tvc  = [[UserProfileViewController alloc] init];
+    tvc.userIdIn                    = user.userId;
+    tvc.screenNameIn                = user.screenName;
+    
+    [self.navigationController pushViewController:tvc animated:YES];
+
 }
 
 @end
