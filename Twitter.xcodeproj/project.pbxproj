@@ -31,6 +31,10 @@
 		3B91FEBA1A84C4210087B046 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B91FEB91A84C4210087B046 /* User.m */; };
 		3BA174011A86BA6900B74DDA /* TweetsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BA173FF1A86BA6900B74DDA /* TweetsViewController.m */; };
 		3BA174021A86BA6900B74DDA /* TweetsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3BA174001A86BA6900B74DDA /* TweetsViewController.xib */; };
+		3BE0D8711A92D19E00C26DE6 /* ContentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BE0D86F1A92D19E00C26DE6 /* ContentViewController.m */; };
+		3BE0D8721A92D19E00C26DE6 /* ContentViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3BE0D8701A92D19E00C26DE6 /* ContentViewController.xib */; };
+		3BE0D8761A92D1C500C26DE6 /* MenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BE0D8741A92D1C500C26DE6 /* MenuViewController.m */; };
+		3BE0D8771A92D1C500C26DE6 /* MenuViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3BE0D8751A92D1C500C26DE6 /* MenuViewController.xib */; };
 		3BE9D61D1A84AE7400E428D0 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BE9D61C1A84AE7400E428D0 /* main.m */; };
 		3BE9D6201A84AE7400E428D0 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BE9D61F1A84AE7400E428D0 /* AppDelegate.m */; };
 		3BE9D6281A84AE7400E428D0 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3BE9D6271A84AE7400E428D0 /* Images.xcassets */; };
@@ -86,6 +90,12 @@
 		3BA173FE1A86BA6900B74DDA /* TweetsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TweetsViewController.h; sourceTree = "<group>"; };
 		3BA173FF1A86BA6900B74DDA /* TweetsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TweetsViewController.m; sourceTree = "<group>"; };
 		3BA174001A86BA6900B74DDA /* TweetsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TweetsViewController.xib; sourceTree = "<group>"; };
+		3BE0D86E1A92D19E00C26DE6 /* ContentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContentViewController.h; sourceTree = "<group>"; };
+		3BE0D86F1A92D19E00C26DE6 /* ContentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContentViewController.m; sourceTree = "<group>"; };
+		3BE0D8701A92D19E00C26DE6 /* ContentViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ContentViewController.xib; sourceTree = "<group>"; };
+		3BE0D8731A92D1C500C26DE6 /* MenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuViewController.h; sourceTree = "<group>"; };
+		3BE0D8741A92D1C500C26DE6 /* MenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuViewController.m; sourceTree = "<group>"; };
+		3BE0D8751A92D1C500C26DE6 /* MenuViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MenuViewController.xib; sourceTree = "<group>"; };
 		3BE9D6171A84AE7400E428D0 /* Twitter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Twitter.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3BE9D61B1A84AE7400E428D0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3BE9D61C1A84AE7400E428D0 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -202,6 +212,12 @@
 				3B8CB1481A91540700895215 /* UserProfileViewController.h */,
 				3B8CB1491A91540700895215 /* UserProfileViewController.m */,
 				3B8CB14A1A91540700895215 /* UserProfileViewController.xib */,
+				3BE0D86E1A92D19E00C26DE6 /* ContentViewController.h */,
+				3BE0D86F1A92D19E00C26DE6 /* ContentViewController.m */,
+				3BE0D8701A92D19E00C26DE6 /* ContentViewController.xib */,
+				3BE0D8731A92D1C500C26DE6 /* MenuViewController.h */,
+				3BE0D8741A92D1C500C26DE6 /* MenuViewController.m */,
+				3BE0D8751A92D1C500C26DE6 /* MenuViewController.xib */,
 			);
 			path = Twitter;
 			sourceTree = "<group>";
@@ -330,6 +346,7 @@
 				3BF12E541A8EFCD200A1B867 /* MentionsViewController.xib in Resources */,
 				3BE9D62B1A84AE7400E428D0 /* LaunchScreen.xib in Resources */,
 				3B72D1B91A88A19E0073B4B6 /* Twitter_logo_blue_32.png in Resources */,
+				3BE0D8771A92D1C500C26DE6 /* MenuViewController.xib in Resources */,
 				3B72D1B11A8881B30073B4B6 /* favorite_on.png in Resources */,
 				3B72D1B71A88855C0073B4B6 /* TweetComposeViewController.xib in Resources */,
 				3B72D1B21A8881B30073B4B6 /* favorite.png in Resources */,
@@ -338,6 +355,7 @@
 				3B72D1BB1A88A35B0073B4B6 /* Twitter_logo_white_32.png in Resources */,
 				3B91FEB01A84AFC00087B046 /* LoginViewController.xib in Resources */,
 				3B22EFEF1A88426700CBE16B /* TweetDetailsViewController.xib in Resources */,
+				3BE0D8721A92D19E00C26DE6 /* ContentViewController.xib in Resources */,
 				3B8CB14C1A91540700895215 /* UserProfileViewController.xib in Resources */,
 				3B72D1AF1A8881B30073B4B6 /* retweet.png in Resources */,
 				3B72D1AE1A8881B30073B4B6 /* retweet_on.png in Resources */,
@@ -395,12 +413,14 @@
 				3BE9D6201A84AE7400E428D0 /* AppDelegate.m in Sources */,
 				3BF12E531A8EFCD200A1B867 /* MentionsViewController.m in Sources */,
 				3B91FEBA1A84C4210087B046 /* User.m in Sources */,
+				3BE0D8711A92D19E00C26DE6 /* ContentViewController.m in Sources */,
 				3B3546941A87EB4A00E7BDC8 /* TweetTableViewCell.m in Sources */,
 				3B91FEB71A84C40E0087B046 /* Tweet.m in Sources */,
 				3BE9D61D1A84AE7400E428D0 /* main.m in Sources */,
 				3B91FEAF1A84AFC00087B046 /* LoginViewController.m in Sources */,
 				3B22EFEE1A88426700CBE16B /* TweetDetailsViewController.m in Sources */,
 				3B8CB14B1A91540700895215 /* UserProfileViewController.m in Sources */,
+				3BE0D8761A92D1C500C26DE6 /* MenuViewController.m in Sources */,
 				3BA174011A86BA6900B74DDA /* TweetsViewController.m in Sources */,
 				3B72D1B61A88855C0073B4B6 /* TweetComposeViewController.m in Sources */,
 			);

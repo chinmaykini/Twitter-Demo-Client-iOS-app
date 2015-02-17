@@ -23,12 +23,14 @@
 @property (nonatomic, strong) UIRefreshControl *refreshControl;
 
 
+
 @end
 
 @implementation TweetsViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+       NSLog(@"Tweet View willDidLoad");
     // Do any additional setup after loading the view from its nib.
     
     self.tweetsTableView.dataSource   = self;
@@ -63,6 +65,21 @@
     [self loadTimeline];
 }
 
+
+-(void)viewDidAppear:(BOOL)animated{
+    NSLog(@"Tweet View didAppear");
+}
+
+-(void)viewDidDisappear:(BOOL)animated{
+    NSLog(@"Tweet View didDisappear");
+}
+-(void)viewWillAppear:(BOOL)animated{
+    NSLog(@"Tweet View willAppear");
+}
+-(void)viewWillDisappear:(BOOL)animated{
+    NSLog(@"Tweet View willDisappear");
+}
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
@@ -91,11 +108,14 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     
+    NSLog(@"selected Tweet Cell");
+    
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
     TweetDetailsViewController *tdvc = [[TweetDetailsViewController alloc] init];
     tdvc.tweetObj                    = self.myTweetsArray[indexPath.row];;
-    
+//    UINavigationController *nc      = [[UINavigationController alloc] initWithRootViewController:tdvc];
+//    [self.navigationController pushViewController:tdvc animated:YES completion:nil];
     [self.navigationController pushViewController:tdvc animated:YES];
 }
 
@@ -159,7 +179,8 @@
     UserProfileViewController *tvc       = [[UserProfileViewController alloc] init];
     tvc.userIdIn = clickedUser.userId;
     tvc.screenNameIn = clickedUser.screenName;
-    [self.navigationController pushViewController:tvc animated:YES];
+    UINavigationController *nc      = [[UINavigationController alloc] initWithRootViewController:tvc];
+    [self presentViewController:nc animated:YES completion:nil];
 
 }
 

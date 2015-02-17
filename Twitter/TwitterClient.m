@@ -126,7 +126,7 @@ NSString * const kTwitterBaseURL = @"https://api.twitter.com";
 - (void) homeTimelineWithParams:(NSDictionary *) params completion:(void (^)(NSArray *tweets, NSError *error))completion{
     
     [self GET:@"1.1/statuses/home_timeline.json" parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        NSLog(@"%@", responseObject);
+//        NSLog(@"%@", responseObject);
         NSArray *tweets = [Tweet tweetsWithArray:responseObject];
         completion(tweets, nil); // on this completion the code where you call homeTImeLine is called.
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
@@ -137,7 +137,7 @@ NSString * const kTwitterBaseURL = @"https://api.twitter.com";
 - (void) mentionsTimelineWithParams:(NSDictionary *) params completion:(void (^)(NSArray *tweets, NSError *error))completion{
     
     [self GET:@"1.1/statuses/mentions_timeline.json" parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        NSLog(@"%@", responseObject);
+//        NSLog(@"%@", responseObject);
         NSArray *tweets = [Tweet tweetsWithArray:responseObject];
         completion(tweets, nil); // on this completion the code where you call homeTImeLine is called.
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
@@ -148,7 +148,7 @@ NSString * const kTwitterBaseURL = @"https://api.twitter.com";
 - (void) userTimelineWithParams:(NSDictionary *) params completion:(void (^)(NSArray *tweets, NSError *error))completion{
     
     [self GET:@"1.1/statuses/user_timeline.json" parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        NSLog(@"%@", responseObject);
+//        NSLog(@"%@", responseObject);
         NSArray *tweets = [Tweet tweetsWithArray:responseObject];
         completion(tweets, nil); // on this completion the code where you call homeTImeLine is called.
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
@@ -208,7 +208,7 @@ NSString * const kTwitterBaseURL = @"https://api.twitter.com";
     
     NSLog(@"Get User params : %@", params);
     [self GET:@"1.1/users/show.json" parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        NSLog(@"%@", responseObject);
+//        NSLog(@"%@", responseObject);
         User *currentUser = [[User alloc] initWithDictionary:responseObject];
         completion(currentUser, nil); // on this completion the code where you call homeTImeLine is called.
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {

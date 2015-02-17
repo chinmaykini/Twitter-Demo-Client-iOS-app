@@ -9,6 +9,8 @@
 #import "MentionsViewController.h"
 #import "TwitterClient.h"
 #import "TweetTableViewCell.h"
+#import "TweetComposeViewController.h"
+#import "UserProfileViewController.h"
 
 @interface MentionsViewController ()  <UITableViewDataSource, UITableViewDelegate, TweetTableViewCellDelegate>
 
@@ -18,6 +20,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
     // Do any additional setup after loading the view from its nib.
     
     self.mentionsTableView.dataSource   = self;
@@ -35,10 +38,10 @@
     
 //    UIImageView *titleLogo  = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Twitter_logo_white_32.png"]];
 //    self.navigationItem.titleView = titleLogo;
-    self.navigationItem.title                               = @"Me";
+    self.navigationItem.title                               = @"Mentions";
     
-    // Signout button
-//    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Logout" style:UIBarButtonItemStyleDone target:self action:@selector(onSignOut)];
+    // button
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Cancel" style:UIBarButtonItemStyleDone target:self action:@selector(onCancel)];
     
     // New Tweet button
 //    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Compose" style:UIBarButtonItemStyleDone target:self action:@selector(onNew)];
@@ -52,6 +55,8 @@
  
     
 }
+
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -123,6 +128,28 @@
 -(void)tweetTableViewCell:(TweetTableViewCell *)tweetTableViewCell didUpdateValue:(TweetTableViewCell *) tweetCell{
     NSIndexPath *indexPath = [self.mentionsTableView indexPathForCell:tweetCell];
     [self.mentionsTableView reloadData];
+}
+
+-(void)onCancel{
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+-(void)tweetTableViewCell:(TweetTableViewCell *)tweetTableViewCell profileImageClicked:(User *)clickedUser{
+    
+    UserProfileViewController *tvc       = [[UserProfileViewController alloc] init];
+    tvc.userIdIn = clickedUser.userId;
+    tvc.screenNameIn = clickedUser.screenName;
+    [self.navigationController pushViewController:tvc animated:YES];
+    
+}
+
+-(void)tweetTableViewCell:(TweetTableViewCell *)tweetTableViewCell replyClicked:(Tweet *)replyTweet{
+    TweetComposeViewController *tcvc = [[TweetComposeViewController alloc] init];
+    tcvc.replyScreenName            = replyTweet.user.screenName;
+    tcvc.replyTweetId               = replyTweet.tweetId;
+    tcvc.isReply                    = YES;
+    UINavigationController *nc      = [[UINavigationController alloc] initWithRootViewController:tcvc];
+    [self.navigationController presentViewController:nc animated:YES completion:nil];
 }
 
 @end

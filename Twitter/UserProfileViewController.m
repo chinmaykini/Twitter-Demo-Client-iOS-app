@@ -11,6 +11,7 @@
 #import "User.h"
 #import "Tweet.h"
 #import "UIImageView+AFNetworking.h"
+#import "TweetComposeViewController.h"
 
 @interface UserProfileViewController ()
 
@@ -25,19 +26,11 @@
     self.navigationController.navigationBar.barTintColor    = [UIColor colorWithRed:0.40196557852924675 green:0.77594807697599411 blue:1 alpha:1];
     
     self.navigationController.navigationBar.tintColor       = [UIColor whiteColor];
-    //    self.navigationController.navigationBar.translucent     = YES;
+    //  self.navigationController.navigationBar.translucent     = YES;
     
-    
-    
-    // Signout button
+    //  button
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Cancel" style:UIBarButtonItemStyleDone target:self action:@selector(onCancel)];
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Compose" style:UIBarButtonItemStyleDone target:self action:@selector(onCompose)];
-    
-//    self.navigationController.navigationBar.titleTextA
-    
-    self.refreshControl = [[UIRefreshControl alloc] init];
-    [self.refreshControl addTarget:self action:@selector(onRefresh) forControlEvents:UIControlEventValueChanged];
-//    [self.tweetsTableView insertSubview:self.refreshControl atIndex:0];
-//    [self.view addSubview:self.refreshControl];
 
     self.profileImage.layer.cornerRadius  = 6;
     self.profileImage.clipsToBounds       = YES;
@@ -96,15 +89,21 @@
         self.navigationItem.title = @"Me";
     }
     
-    
 }
 
--(void) onCompose{
+
+-(void) onCompose {
     
+    TweetComposeViewController *tcvc = [[TweetComposeViewController alloc] init];
+    tcvc.replyScreenName            = @"";
+    UINavigationController *nc      = [[UINavigationController alloc] initWithRootViewController:tcvc];
+    
+    [self.navigationController presentViewController:nc animated:YES completion:nil];
 }
 
--(void) onRefresh{
- [self loadTimeline];   
+
+-(void)onCancel{
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 @end

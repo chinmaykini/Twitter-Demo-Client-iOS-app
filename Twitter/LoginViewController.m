@@ -12,6 +12,7 @@
 #import "TweetsViewController.h"
 #import "MentionsViewController.h"
 #import "UserProfileViewController.h"
+#import "ContentViewController.h"
 
 @interface LoginViewController ()
 
@@ -27,17 +28,9 @@
             // modally preset the tweets view
             NSLog(@"Welcome to %@", user.screenName);
             
-            TweetsViewController *tvc       = [[TweetsViewController alloc] init];
-//            UserProfileViewController *tvc       = [[UserProfileViewController alloc] init];
-            
-//            tvc.userIdIn = user.userId;
-//            tvc.screenNameIn = user.screenName;
+            ContentViewController *cvc =   [[ContentViewController alloc] init];
+            [self presentViewController:cvc animated:YES completion:nil];
 
-//            MentionsViewController *tvc       = [[MentionsViewController alloc] init];
-            UINavigationController *nc      = [[UINavigationController alloc] initWithRootViewController:tvc];
-            
-//            [self presentViewController:[[TweetsViewController alloc] init] animated:YES completion:nil];
-            [self presentViewController:nc animated:YES completion:nil];
         } else {
             // present error view
         }

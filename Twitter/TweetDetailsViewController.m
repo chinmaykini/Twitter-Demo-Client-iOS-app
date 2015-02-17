@@ -30,7 +30,8 @@
     self.navigationItem.title                               = @"Tweet";
     
     
-    // Signout button
+//    // button
+//    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Cancel" style:UIBarButtonItemStyleDone target:self action:@selector(onCancel)];
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Reply" style:UIBarButtonItemStyleDone target:self action:@selector(onReply)];
     
     self.tweetObj.delegate = self;
@@ -129,6 +130,9 @@
     
 }
 
+-(void)onCancel{
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
 
 - (IBAction)onTapFav:(id)sender {
 
@@ -149,9 +153,8 @@
     UserProfileViewController *tvc       = [[UserProfileViewController alloc] init];
     tvc.userIdIn = self.tweetObj.user.userId;
     tvc.screenNameIn = self.tweetObj.user.screenName;
-    
-    [self.navigationController pushViewController:tvc animated:YES];
-
+    UINavigationController *nc      = [[UINavigationController alloc] initWithRootViewController:tvc];
+    [self presentViewController:nc animated:YES completion:nil];
     
 }
 

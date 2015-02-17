@@ -43,6 +43,7 @@ NSString * const UserDidLogoutNotification = @"UserDidLogoutNotification";
         self.friendsCount = [dictionary[@"friends_count"] integerValue];
         self.listedCount = [dictionary[@"listed_count"] integerValue];
         self.profileBackgroundImageURL = dictionary[@"profile_background_image_url"];
+        
         self.userId = [dictionary[@"id"] integerValue];
     }
     
