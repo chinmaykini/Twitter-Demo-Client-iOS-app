@@ -6,19 +6,20 @@ Adding Animations like hamburger menu to twitter app developed in the previous a
 ### Completed user Stories
 
 - Hamburger menu
-- [x] Required : Dragging anywhere in the view should reveal the menu.
-- [x] Required : The menu should include links to your profile, the home timeline, and the mentions view.
-- [x] Required : The menu can look similar to the LinkedIn menu below or feel free to take liberty with the UI.
+  - [x] Required : Dragging anywhere in the view should reveal the menu.
+  - [x] Required : The menu should include links to your profile, the home timeline, and the mentions view.
+  - [x] Required : The menu can look similar to the LinkedIn menu below or feel free to take liberty with the UI.
 
-- [x] Required : Profile page
-- [x] Required : Contains the user header view
-- [x] Required : Contains a section with the users basic stats: # tweets, # following, # followers
-- [ ] Optional : Implement the paging view for the user description.
-- [ ] Optional : As the paging view moves, increase the opacity of the background screen. See the actual Twitter app for this effect
-- [ ] Optional : Pulling down the profile page should blur and resize the header image.
+- Profile page
+  - [x] Required : Contains the user header view
+  - [x] Required : Contains a section with the users basic stats: # tweets, # following, # followers
+  - [ ] Optional : Implement the paging view for the user description.
+  - [ ] Optional : As the paging view moves, increase the opacity of the background screen. See the actual Twitter app for this effect
+  - [ ] Optional : Pulling down the profile page should blur and resize the header image.
 
-- [x] Required : Home Timeline
-- [x] Required : Tapping on a user image should bring up that user's profile page
+- Home Timeline
+  - [x] Required : Tapping on a user image should bring up that user's profile page
+
 - [ ] Optional : Account switching
 - [ ] Optional : Long press on tab bar to bring up Account view with animation
 - [ ] Optional : Tap account to switch to
