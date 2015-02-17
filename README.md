@@ -5,7 +5,7 @@ Adding Animations like hamburger menu to twitter app developed in the previous a
 
 ### Completed user Stories
 
-- [x] Required : Hamburger menu
+* Hamburger menu
 - [x] Required : Dragging anywhere in the view should reveal the menu.
 - [x] Required : The menu should include links to your profile, the home timeline, and the mentions view.
 - [x] Required : The menu can look similar to the LinkedIn menu below or feel free to take liberty with the UI.
